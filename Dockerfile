@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN echo "APT::Get::Assume-Yes \"true\";" > /etc/apt/apt.conf.d/90assumeyes
@@ -10,7 +10,6 @@ RUN apt-get install -y --no-install-recommends \
         ca-certificates \
         curl \
         libcurl4 \
-        libicu60 \
         libunwind8 \
         netcat \
         libssl1.0 \
@@ -28,7 +27,7 @@ RUN rm sqlpackage.zip
 # Install SQLCMD
 RUN apt install -y gnupg gnupg1 gnupg2
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
-RUN curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list | tee /etc/apt/sources.list.d/msprod.list
+RUN curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list | tee /etc/apt/sources.list.d/msprod.list
 RUN apt update && apt upgrade -y
 RUN ACCEPT_EULA=Y apt install mssql-tools unixodbc-dev
 RUN ln -s /opt/mssql-tools/bin/sqlcmd /usr/local/bin/sqlcmd
