@@ -15,7 +15,8 @@ RUN apt-get install -y --no-install-recommends \
         libssl1.0 \
         wget \
         libgdiplus \
-        unzip 
+        unzip \
+        libicu-dev
 
 # Install SqlPackage
 RUN wget -O sqlpackage.zip https://go.microsoft.com/fwlink/?linkid=2143497
